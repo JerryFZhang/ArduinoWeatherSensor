@@ -19,9 +19,11 @@ void loop() {
     DHT.read11(A0);
     humidity = DHT.humidity;
     temp = DHT.temperature;
-    lcd.print(humidity);
-	  lcd.setCursor(0, 1);
+    lcd.print("TEMPURATURE:");
 	  lcd.print(temp);
+    lcd.setCursor(0, 1);
+    lcd.print("HUMIDITY:");
+    lcd.print(humidity);
     delay(1000);
     lcd.clear();
 } 
