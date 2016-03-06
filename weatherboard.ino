@@ -8,10 +8,14 @@ double humidity;
 double temp;
 
 void setup() {
-  lcd.begin(16, 2);
-  Serial.begin(9600);
-  delay(1000);
- 
+	// Initialize the lines and columns of display will be used.
+  	lcd.begin(16, 2);
+	lcd.print("    Welcome!");
+  	
+	// Wait for one 
+	delay(1000);
+ 	
+	lcd.clear();
 }
 
 void loop() {
