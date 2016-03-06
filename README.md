@@ -1,4 +1,4 @@
-#RoomSensorWithLCD
+#ArduinoWeatherSensor
 This is the code and library for Arduino with 1602 LCD and DHT11 temperature and humidity sensor.
 
 # How to use
