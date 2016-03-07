@@ -9,40 +9,48 @@ double temp;
 
 void setup() {
 	// Initialize the lines and columns of display will be used.
-  	lcd.begin(16, 2);
-	
-	lcd.print("    Welcome!"); // Extra spacing added for alignment purpose.
-  	
+    lcd.begin(16, 2);
+
+	 lcd.print("    Welcome!"); // Extra spacing added for alignment purpose.
+
 	// Wait for one second
-	delay(1000);
- 	
+	 delay(1000);
+
 	//Clear the display for displaying the data.
-	lcd.clear();
+	 lcd.clear();
 }
 
 void loop() {
 	// Fetching data from the sensor.
     DHT.read11(A0);
-	
-	// Store the weather information in a global variable.
-    humidity = DHT.humidity;
+
+  // If the temperature passed has been changed, then update.
+  // This will minimize the refersh frequency result in a minimal power comsumption.
+  if (temp != DHT.temperature){
     temp = DHT.temperature;
-    
-	//Print the Temperature information on the display.
-	lcd.print("TEMP:");
-	lcd.print(temp);
+    lcd.setCursor(0, 0);
+    lcd.print("TEMP:");
+  	lcd.print(temp);
     lcd.print("C");
-	
-	//Set the cursor so the print start from the index 1, which is the second line.
+  }
+  else {
+    // Do nothing
+  }
+
+  if (humidity != DHT.humidity){
+    humidity = DHT.humidity;
     lcd.setCursor(0, 1);
-    
-	// Print the humidity information on the display.
-	lcd.print("HUMI:");
+    lcd.print("HUMI:");
     lcd.print(humidity);
     lcd.print("%");
-	
+  }
+
+  else {
+    // Do nothing
+  }
+
+
 	// Wait for a second.
     delay(1000);
     lcd.clear();
-} 
-
+}
